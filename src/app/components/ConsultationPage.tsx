@@ -53,23 +53,26 @@ export function ConsultationPage() {
     setIsSubmitting(true);
 
     try {
-      // Use Formspree - very easy to set up, no keys required initially
-      // You just need to confirm the first email you receive
+      // Use Formspree with FormData for maximum compatibility
+      const submissionData = new FormData();
+      submissionData.append("subject", `New Consultation Request from ${formData.fullName}`);
+      Object.entries(formData).forEach(([key, value]) => {
+        submissionData.append(key, value.toString());
+      });
+
       const response = await fetch("https://formspree.io/f/andresegp879@gmail.com", {
         method: "POST",
+        body: submissionData,
         headers: {
-          "Content-Type": "application/json",
           "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          subject: `New Consultation Request from ${formData.fullName}`,
-          ...formData
-        })
+        }
       });
 
       if (response.ok) {
         navigate('/thank-you');
       } else {
+        const errorData = await response.json();
+        console.error("Formspree error:", errorData);
         throw new Error("Submission failed");
       }
     } catch (error) {
