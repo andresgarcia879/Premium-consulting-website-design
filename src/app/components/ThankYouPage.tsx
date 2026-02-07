@@ -14,21 +14,6 @@ export function ThankYouPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col transition-colors duration-700 pt-24">
-      <header className="py-8 px-6 md:px-12 lg:px-24">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={silkTransition}
-        >
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-emerald-dark/60 dark:text-cream/60 hover:text-emerald-dark dark:hover:text-cream transition-colors font-bold group"
-          >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            {t.hero.backToHome}
-          </Link>
-        </motion.div>
-      </header>
 
       <main className="flex-grow flex items-center">
         <Section className="w-full">
