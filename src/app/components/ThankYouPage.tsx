@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 import { motion, Transition } from 'framer-motion';
-import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { Section } from './Section';
 import { Footer } from './Footer';
 import { useLanguage } from '../context/LanguageContext';

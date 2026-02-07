@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion, Variants, AnimatePresence, Transition } from 'framer-motion';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { motion, Variants, Transition } from 'framer-motion';
+import { CheckCircle2 } from 'lucide-react';
 import { Section } from './Section';
 import { Footer } from './Footer';
 import { useLanguage } from '../context/LanguageContext';

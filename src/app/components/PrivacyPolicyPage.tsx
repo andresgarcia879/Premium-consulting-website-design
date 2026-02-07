@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { Section } from './Section';
 import { Footer } from './Footer';
 import { useLanguage } from '../context/LanguageContext';
-import { Shield, FileText, User, Mail, Database, Lock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Shield, FileText, User, Mail, Database, Lock } from 'lucide-react';
 
 const silkTransition = { duration: 0.9, ease: [0.16, 1, 0.3, 1] as any };
 
