@@ -12,7 +12,8 @@ export const translations = {
             headline: "Full-Stack Digital Consultant",
             subheadline: "for Swiss Businesses",
             description: "I design, build and advise on reliable digital systems — from strategy to execution.",
-            highlights: ["Europe-based", "GDPR compliant", "Direct Advisory"]
+            highlights: ["Europe-based", "GDPR compliant", "Direct Advisory"],
+            backToHome: "Return home"
         },
         positioning: {
             headline: "Consulting,",
@@ -187,8 +188,9 @@ export const translations = {
             tag: "Schweizer Premium-Digitalberatung",
             headline: "Full-Stack Digitalberater",
             subheadline: "für Schweizer Unternehmen",
-            description: "Ich entwerfe, baue und berate bei zuverlässigen digitalen Systemen – von der Strategie bis zur Ausführung.",
-            highlights: ["In Europa ansässig", "DSGVO-konform", "Direkte Beratung"]
+            description: "Ich entwerfe, baue und berate bei zuverlässigen digitalen Systemen — von der Strategie bis zur Ausführung.",
+            highlights: ["Sitz in Europa", "DSGVO-konform", "Direkte Beratung"],
+            backToHome: "Zur Startseite"
         },
         positioning: {
             headline: "Beratung,",
@@ -364,7 +366,8 @@ export const translations = {
             headline: "Consultant Digital Full-Stack",
             subheadline: "pour les entreprises suisses",
             description: "Je conçoit, construit et conseille sur des systèmes numériques fiables — de la stratégie à l'exécution.",
-            highlights: ["Basé en Europe", "Conforme RGPD", "Conseil Direct"]
+            highlights: ["Basé en Europe", "Conforme RGPD", "Conseil Direct"],
+            backToHome: "Retour à l'accueil"
         },
         positioning: {
             headline: "Conseil,",

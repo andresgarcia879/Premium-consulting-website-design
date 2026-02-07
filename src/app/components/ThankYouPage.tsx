@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion, Transition } from 'framer-motion';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Section } from './Section';
 import { Footer } from './Footer';
 import { useLanguage } from '../context/LanguageContext';
@@ -22,9 +22,10 @@ export function ThankYouPage() {
         >
           <Link
             to="/"
-            className="text-emerald-dark dark:text-cream font-bold tracking-tight text-xl transition-colors"
+            className="inline-flex items-center gap-2 text-emerald-dark/60 dark:text-cream/60 hover:text-emerald-dark dark:hover:text-cream transition-colors font-bold group"
           >
-            {t.footer.copyright.split(' ').slice(0, 2).join(' ')}
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            {t.hero.backToHome}
           </Link>
         </motion.div>
       </header>
