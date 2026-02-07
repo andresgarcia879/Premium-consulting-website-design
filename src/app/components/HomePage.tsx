@@ -20,15 +20,15 @@ import { Footer } from './Footer';
 import { PremiumButton } from './PremiumButton';
 import { useLanguage } from '../context/LanguageContext';
 
-const silkTransition: Transition = { duration: 0.9, ease: [0.16, 1, 0.3, 1] };
-const springTransition: Transition = { type: "spring", stiffness: 100, damping: 20, mass: 1 };
+const silkTransition: Transition = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
+const smoothSpring: Transition = { type: "spring", stiffness: 60, damping: 15, mass: 0.8 }; // More fluid/softer
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
       delayChildren: 0.2,
     },
   },
@@ -204,14 +204,14 @@ export function HomePage() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ ...silkTransition, layout: springTransition }}
-                  className={`relative p-8 rounded-sm transition-all duration-700 cursor-pointer overflow-hidden border ${isExpanded
+                  transition={{ ...silkTransition, layout: smoothSpring }}
+                  className={`relative p-8 rounded-sm transition-colors duration-500 cursor-pointer overflow-hidden border ${isExpanded
                     ? 'bg-emerald-dark text-cream dark:bg-cream dark:text-emerald-dark border-emerald-dark dark:border-cream shadow-2xl z-20 md:col-span-2 lg:col-span-2'
                     : 'bg-emerald-dark/[0.02] dark:bg-cream/[0.02] backdrop-blur-md border-emerald-dark/10 dark:border-cream/10 hover:border-emerald-dark dark:hover:border-cream'
                     }`}
                 >
-                  <motion.div layout transition={springTransition} className="flex items-start justify-between mb-6">
-                    <div className={`w-12 h-12 flex items-center justify-center rounded-sm transition-colors duration-700 ${isExpanded
+                  <motion.div layout transition={smoothSpring} className="flex items-start justify-between mb-6">
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-sm transition-colors duration-500 ${isExpanded
                       ? 'bg-cream/10 dark:bg-emerald-dark/10 text-cream dark:text-emerald-dark'
                       : 'bg-emerald-dark/5 dark:bg-cream/5 text-emerald-dark dark:text-cream'
                       }`}>
@@ -223,6 +223,7 @@ export function HomePage() {
                           initial={{ opacity: 0, rotate: -90 }}
                           animate={{ opacity: 1, rotate: 0 }}
                           exit={{ opacity: 0, rotate: 90 }}
+                          transition={{ duration: 0.3 }}
                           className="p-1 hover:bg-cream/10 dark:hover:bg-emerald-dark/10 rounded-full transition-colors"
                         >
                           <X className="w-5 h-5" />
@@ -231,11 +232,11 @@ export function HomePage() {
                     </AnimatePresence>
                   </motion.div>
 
-                  <motion.h3 layout transition={springTransition} className={`text-xl font-bold mb-3 tracking-tight transition-all duration-700 ${isExpanded ? 'text-3xl md:text-5xl lg:text-6xl mb-6' : ''}`}>
+                  <motion.h3 layout transition={smoothSpring} className={`text-xl font-bold mb-3 tracking-tight transition-colors duration-500 ${isExpanded ? 'text-3xl md:text-5xl lg:text-6xl mb-6' : ''}`}>
                     {service.title}
                   </motion.h3>
 
-                  <motion.p layout transition={springTransition} className={`leading-relaxed font-medium transition-all duration-700 ${isExpanded ? 'text-lg opacity-90 mb-10 max-w-2xl' : 'text-sm opacity-70'}`}>
+                  <motion.p layout transition={smoothSpring} className={`leading-relaxed font-medium transition-colors duration-500 ${isExpanded ? 'text-lg opacity-90 mb-10 max-w-2xl' : 'text-sm opacity-70'}`}>
                     {service.desc}
                   </motion.p>
 
