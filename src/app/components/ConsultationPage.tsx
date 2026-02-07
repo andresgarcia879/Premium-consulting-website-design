@@ -53,27 +53,30 @@ export function ConsultationPage() {
     setIsSubmitting(true);
 
     try {
-      // Use Formspree with FormData for maximum compatibility
-      const submissionData = new FormData();
-      submissionData.append("subject", `New Consultation Request from ${formData.fullName}`);
-      Object.entries(formData).forEach(([key, value]) => {
-        submissionData.append(key, value.toString());
-      });
+      // Use Web3Forms - Much more stable with a designated Access Key
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
 
-      const response = await fetch("https://formspree.io/f/andresegp879@gmail.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: submissionData,
         headers: {
+          "Content-Type": "application/json",
           "Accept": "application/json"
-        }
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Consultation Request from ${formData.fullName}`,
+          from_name: "Portfolio Consultant",
+          ...formData
+        })
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         navigate('/thank-you');
       } else {
-        const errorData = await response.json();
-        console.error("Formspree error:", errorData);
-        throw new Error("Submission failed");
+        console.error("Web3Forms error:", result);
+        throw new Error(result.message || "Submission failed");
       }
     } catch (error) {
       console.error("Submission error:", error);
