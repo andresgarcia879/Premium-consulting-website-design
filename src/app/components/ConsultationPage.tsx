@@ -53,29 +53,24 @@ export function ConsultationPage() {
     setIsSubmitting(true);
 
     try {
-      // Use Web3Forms - simple and reliable for static sites
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
-
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Use Formspree - very easy to set up, no keys required initially
+      // You just need to confirm the first email you receive
+      const response = await fetch("https://formspree.io/f/andresegp879@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          access_key: accessKey,
           subject: `New Consultation Request from ${formData.fullName}`,
-          from_name: "Portfolio Consultant",
           ...formData
         })
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         navigate('/thank-you');
       } else {
-        throw new Error(result.message || "Submission failed");
+        throw new Error("Submission failed");
       }
     } catch (error) {
       console.error("Submission error:", error);
