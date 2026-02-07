@@ -13,7 +13,7 @@ export function ThankYouPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col transition-colors duration-700">
+    <div className="min-h-screen bg-background text-foreground flex flex-col transition-colors duration-700 pt-24">
       <header className="py-8 px-6 md:px-12 lg:px-24">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

@@ -21,9 +21,9 @@ export function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: t.nav.services, href: '/#services' },
-        { name: t.nav.work, href: '/#work' },
-        { name: t.nav.process, href: '/#positioning' },
+        { name: t.nav.services, href: '/Portfolio/#services' },
+        { name: t.nav.work, href: '/Portfolio/#work' },
+        { name: t.nav.process, href: '/Portfolio/#positioning' },
     ];
 
     const languages: { code: 'en' | 'de' | 'fr'; label: string }[] = [

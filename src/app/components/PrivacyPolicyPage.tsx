@@ -19,7 +19,7 @@ export function PrivacyPolicyPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-background text-foreground transition-colors duration-700">
+        <div className="min-h-screen bg-background text-foreground transition-colors duration-700 pt-24">
             <header className="py-8 px-6 md:px-12 lg:px-24">
                 <Link
                     to="/"
