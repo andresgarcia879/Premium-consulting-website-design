@@ -168,7 +168,7 @@ export function ConsultationPage() {
               <div className="space-y-2">
                 <label htmlFor="website" className="text-sm font-bold uppercase tracking-widest text-emerald-dark/60 dark:text-cream/40">Website (optional)</label>
                 <input
-                  type="url"
+                  type="text"
                   id="website"
                   name="website"
                   value={formData.website}
