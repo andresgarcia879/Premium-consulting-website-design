@@ -13,7 +13,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <Router>
+        <Router basename="/Portfolio">
           <DynamicBackground />
           <Navbar />
           <Routes>
