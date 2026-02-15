@@ -9,7 +9,7 @@ const items = [1, 2, 3]; // Placeholder for key capabilities
 
 const VideoCard = ({ src, number }: { src: string, number: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [isPlaying, setIsPlaying] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     // Set playback speed on mount
     React.useEffect(() => {
@@ -32,15 +32,16 @@ const VideoCard = ({ src, number }: { src: string, number: string }) => {
     };
 
     return (
-        <div className="relative group">
+        <div
+            className="relative group cursor-pointer"
+            onClick={togglePlay}
+        >
             {/* Decorative Overlay - Simplified to avoid z-index fighting */}
             <div className="absolute inset-0 bg-black/10 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 relative">
                 <video
                     ref={videoRef}
-                    autoPlay
-                    loop
                     muted
                     playsInline
                     className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5 will-change-transform"
