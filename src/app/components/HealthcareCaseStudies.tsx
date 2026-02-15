@@ -1,9 +1,61 @@
+```javascript
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Play, Pause } from 'lucide-react';
 import { Section } from './Section';
 import { useLanguage } from '../context/LanguageContext';
 
 const items = [1, 2, 3]; // Placeholder for key capabilities
+
+const VideoCard = ({ src, number }: { src: string, number: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <div className="relative group">
+      <div className="absolute inset-0 bg-emerald-dark/10 dark:bg-black/20 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 transform transition-transform duration-700 hover:scale-[1.02] relative">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5"
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+
+        {/* Custom Controls */}
+        <button
+          onClick={togglePlay}
+          className="absolute bottom-6 right-6 w-12 h-12 bg-cream/90 dark:bg-emerald-dark/90 backdrop-blur-md rounded-full flex items-center justify-center text-emerald-dark dark:text-cream shadow-lg z-20 hover:scale-110 transition-transform cursor-pointer"
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5 fill-current" />
+          ) : (
+            <Play className="w-5 h-5 fill-current ml-1" />
+          )}
+        </button>
+      </div>
+      <div className="absolute -bottom-6 -right-6 text-[120px] font-bold text-emerald-dark/5 dark:text-cream/5 font-serif select-none z-0">
+        {number}
+      </div>
+    </div>
+  );
+};
 
 export function HealthcareCaseStudies() {
     const { t } = useLanguage();
@@ -51,24 +103,7 @@ export function HealthcareCaseStudies() {
                     className="grid lg:grid-cols-2 gap-16 items-center mb-32"
                 >
                     {/* Video Left */}
-                    <div className="relative group">
-                        <div className="absolute inset-0 bg-emerald-dark/10 dark:bg-black/20 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 transform transition-transform duration-700 hover:scale-[1.02]">
-                            {/* Placeholder Video - Replace src with actual local file */}
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5"
-                            >
-                                <source src="/videos/swiss-dental.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                        <div className="absolute -bottom-6 -right-6 text-[120px] font-bold text-emerald-dark/5 dark:text-cream/5 font-serif select-none z-0">
-                            01
-                        </div>
-                    </div>
+                    <VideoCard src="/videos/swiss-dental.mp4" number="01" />
 
                     {/* Content Right */}
                     <div className="space-y-10 lg:pl-8 relative z-10">
@@ -106,7 +141,9 @@ export function HealthcareCaseStudies() {
                                 <p className="text-sm font-medium italic opacity-60 mb-6">"Elevated brand positioning aligned with Swiss precision standards."</p>
 
                                 <a
-                                    href="#" // Add live link here
+                                    href="https://elite-swiss-dental.vercel.app"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group inline-flex items-center gap-3 px-8 py-4 bg-emerald-dark dark:bg-cream text-cream dark:text-emerald-dark rounded-sm font-bold transition-all hover:bg-emerald-deep dark:hover:bg-gray-200"
                                 >
                                     View Live Platform
@@ -161,7 +198,9 @@ export function HealthcareCaseStudies() {
                                 <p className="text-sm font-medium italic opacity-60 mb-6">"Strengthened digital credibility and premium positioning in the German market."</p>
 
                                 <a
-                                    href="#" // Add live link here
+                                    href="https://hd-esthetic-germany.vercel.app"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group inline-flex items-center gap-3 px-8 py-4 bg-emerald-dark dark:bg-cream text-cream dark:text-emerald-dark rounded-sm font-bold transition-all hover:bg-emerald-deep dark:hover:bg-gray-200"
                                 >
                                     View Live Platform
@@ -173,22 +212,7 @@ export function HealthcareCaseStudies() {
 
                     {/* Video Right (Desktop) */}
                     <div className="relative group order-1 lg:order-2">
-                        <div className="absolute inset-0 bg-emerald-dark/10 dark:bg-black/20 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 transform transition-transform duration-700 hover:scale-[1.02]">
-                            {/* Placeholder Video - Replace src with actual local file */}
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5"
-                            >
-                                <source src="/videos/hd-esthetic.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                        <div className="absolute -bottom-6 -left-6 text-[120px] font-bold text-emerald-dark/5 dark:text-cream/5 font-serif select-none z-0">
-                            02
-                        </div>
+                       <VideoCard src="/videos/hd-esthetic.mp4" number="02" />
                     </div>
                 </motion.div>
 
