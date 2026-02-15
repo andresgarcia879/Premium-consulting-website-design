@@ -19,6 +19,7 @@ import { Section } from './Section';
 import { Footer } from './Footer';
 import { PremiumButton } from './PremiumButton';
 import { useLanguage } from '../context/LanguageContext';
+import { HealthcareCaseStudies } from './HealthcareCaseStudies';
 
 const silkTransition: Transition = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
 const smoothSpring: Transition = { type: "spring", stiffness: 60, damping: 15, mass: 0.8 }; // More fluid/softer
@@ -291,6 +292,9 @@ export function HomePage() {
           </motion.div>
         </div>
       </Section>
+
+      {/* Featured Healthcare Case Studies - Premium Consultancy Section */}
+      <HealthcareCaseStudies />
 
       {/* Selected Work Section */}
       <Section id="work" className="bg-emerald-deep dark:bg-emerald-dark relative overflow-hidden pt-32 pb-48">
