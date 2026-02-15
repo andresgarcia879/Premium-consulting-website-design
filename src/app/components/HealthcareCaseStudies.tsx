@@ -43,7 +43,7 @@ const VideoCard = ({ src, number }: { src: string, number: string }) => {
                 <video
                     ref={videoRef}
                     muted
-                    preload="auto"
+                    preload="none"
                     playsInline
                     className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5 will-change-transform"
                 >
