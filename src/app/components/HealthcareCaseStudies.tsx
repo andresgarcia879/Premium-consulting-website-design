@@ -1,5 +1,5 @@
 
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Pause } from 'lucide-react';
 import { Section } from './Section';
@@ -10,6 +10,13 @@ const items = [1, 2, 3]; // Placeholder for key capabilities
 const VideoCard = ({ src, number }: { src: string, number: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(true);
+
+    // Set playback speed on mount
+    React.useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 2.5;
+        }
+    }, []);
 
     const togglePlay = (e: React.MouseEvent) => {
         e.stopPropagation(); // Prevent bubbling issues
