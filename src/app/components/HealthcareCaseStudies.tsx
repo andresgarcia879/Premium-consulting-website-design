@@ -11,13 +11,6 @@ const VideoCard = ({ src, number }: { src: string, number: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    // Set playback speed on mount
-    React.useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.playbackRate = 2.5;
-        }
-    }, []);
-
     const togglePlay = (e: React.MouseEvent) => {
         e.stopPropagation(); // Prevent bubbling issues
         if (videoRef.current) {
@@ -43,7 +36,7 @@ const VideoCard = ({ src, number }: { src: string, number: string }) => {
                 <video
                     ref={videoRef}
                     muted
-                    preload="none"
+                    preload="auto"
                     playsInline
                     className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5 will-change-transform"
                 >
