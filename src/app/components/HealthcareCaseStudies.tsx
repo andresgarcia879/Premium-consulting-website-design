@@ -1,4 +1,4 @@
-```javascript
+
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Pause } from 'lucide-react';
@@ -8,53 +8,53 @@ import { useLanguage } from '../context/LanguageContext';
 const items = [1, 2, 3]; // Placeholder for key capabilities
 
 const VideoCard = ({ src, number }: { src: string, number: string }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isPlaying, setIsPlaying] = useState(true);
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause();
+            } else {
+                videoRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
+        }
+    };
 
-  return (
-    <div className="relative group">
-      <div className="absolute inset-0 bg-emerald-dark/10 dark:bg-black/20 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 transform transition-transform duration-700 hover:scale-[1.02] relative">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5"
-        >
-          <source src={src} type="video/mp4" />
-        </video>
+    return (
+        <div className="relative group">
+            <div className="absolute inset-0 bg-emerald-dark/10 dark:bg-black/20 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 transform transition-transform duration-700 hover:scale-[1.02] relative">
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5"
+                >
+                    <source src={src} type="video/mp4" />
+                </video>
 
-        {/* Custom Controls */}
-        <button
-          onClick={togglePlay}
-          className="absolute bottom-6 right-6 w-12 h-12 bg-cream/90 dark:bg-emerald-dark/90 backdrop-blur-md rounded-full flex items-center justify-center text-emerald-dark dark:text-cream shadow-lg z-20 hover:scale-110 transition-transform cursor-pointer"
-          aria-label={isPlaying ? "Pause video" : "Play video"}
-        >
-          {isPlaying ? (
-            <Pause className="w-5 h-5 fill-current" />
-          ) : (
-            <Play className="w-5 h-5 fill-current ml-1" />
-          )}
-        </button>
-      </div>
-      <div className="absolute -bottom-6 -right-6 text-[120px] font-bold text-emerald-dark/5 dark:text-cream/5 font-serif select-none z-0">
-        {number}
-      </div>
-    </div>
-  );
+                {/* Custom Controls */}
+                <button
+                    onClick={togglePlay}
+                    className="absolute bottom-6 right-6 w-12 h-12 bg-cream/90 dark:bg-emerald-dark/90 backdrop-blur-md rounded-full flex items-center justify-center text-emerald-dark dark:text-cream shadow-lg z-20 hover:scale-110 transition-transform cursor-pointer"
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                >
+                    {isPlaying ? (
+                        <Pause className="w-5 h-5 fill-current" />
+                    ) : (
+                        <Play className="w-5 h-5 fill-current ml-1" />
+                    )}
+                </button>
+            </div>
+            <div className="absolute -bottom-6 -right-6 text-[120px] font-bold text-emerald-dark/5 dark:text-cream/5 font-serif select-none z-0">
+                {number}
+            </div>
+        </div>
+    );
 };
 
 export function HealthcareCaseStudies() {
@@ -212,7 +212,7 @@ export function HealthcareCaseStudies() {
 
                     {/* Video Right (Desktop) */}
                     <div className="relative group order-1 lg:order-2">
-                       <VideoCard src="/videos/hd-esthetic.mp4" number="02" />
+                        <VideoCard src="/videos/hd-esthetic.mp4" number="02" />
                     </div>
                 </motion.div>
 
