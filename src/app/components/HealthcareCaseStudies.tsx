@@ -11,42 +11,46 @@ const VideoCard = ({ src, number }: { src: string, number: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(true);
 
-    const togglePlay = () => {
+    const togglePlay = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent bubbling issues
         if (videoRef.current) {
-            if (isPlaying) {
-                videoRef.current.pause();
-            } else {
+            if (videoRef.current.paused) {
                 videoRef.current.play();
+                setIsPlaying(true);
+            } else {
+                videoRef.current.pause();
+                setIsPlaying(false);
             }
-            setIsPlaying(!isPlaying);
         }
     };
 
     return (
         <div className="relative group">
-            <div className="absolute inset-0 bg-emerald-dark/10 dark:bg-black/20 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 transform transition-transform duration-700 hover:scale-[1.02] relative">
+            {/* Decorative Overlay - Simplified to avoid z-index fighting */}
+            <div className="absolute inset-0 bg-black/10 rounded-3xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-dark/10 dark:shadow-black/20 relative">
                 <video
                     ref={videoRef}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5"
+                    className="w-full h-full object-cover bg-emerald-900/10 dark:bg-cream/5 will-change-transform"
                 >
                     <source src={src} type="video/mp4" />
                 </video>
 
-                {/* Custom Controls */}
+                {/* Custom Controls - Removed backdrop-blur for performance */}
                 <button
                     onClick={togglePlay}
-                    className="absolute bottom-6 right-6 w-12 h-12 bg-cream/90 dark:bg-emerald-dark/90 backdrop-blur-md rounded-full flex items-center justify-center text-emerald-dark dark:text-cream shadow-lg z-20 hover:scale-110 transition-transform cursor-pointer"
+                    className="absolute bottom-6 right-6 w-14 h-14 bg-cream dark:bg-emerald-dark flex items-center justify-center text-emerald-dark dark:text-cream shadow-lg z-30 hover:scale-105 transition-transform duration-200 cursor-pointer rounded-full border border-emerald-dark/10"
                     aria-label={isPlaying ? "Pause video" : "Play video"}
                 >
                     {isPlaying ? (
-                        <Pause className="w-5 h-5 fill-current" />
+                        <Pause className="w-6 h-6 fill-current" />
                     ) : (
-                        <Play className="w-5 h-5 fill-current ml-1" />
+                        <Play className="w-6 h-6 fill-current ml-1" />
                     )}
                 </button>
             </div>
